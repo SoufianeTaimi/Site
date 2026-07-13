@@ -1,0 +1,294 @@
+{%- liquid
+  assign bg_color = section.settings.bg_color
+  assign text_color = section.settings.text_color
+  assign heading_color = section.settings.heading_color
+  assign divider_color = section.settings.divider_color
+  assign show_newsletter = section.settings.show_newsletter
+  assign newsletter_heading = section.settings.newsletter_heading
+  assign newsletter_text = section.settings.newsletter_text
+  assign show_social = section.settings.show_social
+  assign show_payment_icons = section.settings.show_payment_icons
+  assign copyright_text = section.settings.copyright_text
+  assign brand_description = section.settings.brand_description
+-%}
+<footer class="footer" style="--footer-bg: {{ bg_color }}; --footer-text: {{ text_color }}; --footer-heading: {{ heading_color }}; --footer-divider: {{ divider_color }};">
+  <div class="footer__container">
+    {# ---- Top section: menus + newsletter ---- #}
+    <div class="footer__grid">
+      {# Column 1: Brand info #}
+      {%- if brand_description != blank or show_social -%}
+        <div class="footer__column footer__column--brand">
+          <h3 class="footer__brand-name">{{ shop.name }}</h3>
+          {%- if brand_description != blank -%}
+            <div class="footer__brand-description">{{ brand_description }}</div>
+          {%- endif -%}
+          {%- if show_social -%}
+            <div class="footer__social">
+              {%- if settings.social_instagram_link != blank -%}
+                <a href="{{ settings.social_instagram_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="15" cy="5" r="1" fill="currentColor"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}
+                <a href="{{ settings.social_facebook_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 13.993 4.92547 17.3027 8.75 17.9028V12.3125H6.71875V10H8.75V8.2375C8.75 6.2325 9.94438 5.125 11.7716 5.125C12.6467 5.125 13.5625 5.28125 13.5625 5.28125V7.25H12.5538C11.5599 7.25 11.25 7.86672 11.25 8.5V10H13.4688L13.1141 12.3125H11.25V17.9028C15.0745 17.3027 18 13.993 18 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+              {%- if settings.social_pinterest_link != blank -%}
+                <a href="{{ settings.social_pinterest_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M10 2C5.58172 2 2 5.58172 2 10C2 13.2301 4.00509 16.0149 6.83291 17.2001C6.75463 16.5761 6.69036 15.6126 6.86782 14.927C7.02958 14.2966 7.97957 10.1898 7.97957 10.1898C7.97957 10.1898 7.68386 9.60418 7.68386 8.73118C7.68386 7.39073 8.49364 6.3645 9.5115 6.3645C10.3732 6.3645 10.7927 7.01055 10.7927 7.79236C10.7927 8.66009 10.2512 9.88636 9.97323 11.0091C9.74241 11.9505 10.4348 12.7161 11.3622 12.7161C13.0176 12.7161 14.2812 10.9745 14.2812 8.43147C14.2812 6.22145 12.6987 4.62809 10.317 4.62809C7.52863 4.62809 5.87816 6.72382 5.87816 8.89659C5.87816 9.72409 6.21809 10.6173 6.64779 11.1364C6.76382 11.2759 6.77549 11.3614 6.74279 11.5077C6.68202 11.7786 6.55079 12.2895 6.5115 12.4559C6.46377 12.6582 6.33425 12.7082 6.12334 12.6077C4.86739 11.9873 4.09713 10.3514 4.09713 8.85141C4.09713 5.83818 6.34613 3.13882 10.4313 3.13882C13.7245 3.13882 16.2484 5.43977 16.2484 8.37305C16.2484 11.637 14.4614 14.2932 11.881 14.2932C10.922 14.2932 10.0289 13.7968 9.70529 13.1941L9.11325 15.5755C8.88886 16.4559 8.2701 17.5686 7.86261 18.2832C8.55989 18.4668 9.26947 18.5627 10 18.5627C14.4183 18.5627 18 14.9809 18 10.5627C18 6.14449 14.4183 2.56274 10 2.56274" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+              {%- if settings.social_twitter_link != blank -%}
+                <a href="{{ settings.social_twitter_link }}" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M18 4.20004C17.3 4.50004 16.6 4.70004 15.8 4.80004C16.6 4.30004 17.2 3.60004 17.5 2.70004C16.8 3.20004 16 3.50004 15.2 3.70004C14.5 2.90004 13.5 2.50004 12.4 2.50004C10.2 2.50004 8.4 4.30004 8.4 6.50004C8.4 6.80004 8.4 7.00004 8.5 7.20004C5.3 7.10004 2.4 5.50004 0.5 3.10004C0.2 3.60004 0 4.20004 0 4.80004C0 6.10004 0.7 7.20004 1.7 7.90004C1 7.90004 0.4 7.70004 0 7.40004V7.50004C0 9.50004 1.4 11.2 3.2 11.6C2.9 11.7 2.5 11.7 2.1 11.7C1.8 11.7 1.5 11.7 1.2 11.6C1.8 13.2 3.3 14.4 5.1 14.4C3.7 15.5 2 16.1 0.1 16.1C-0.1 16.1 -0.2 16.1 0 16.1C1.8 17.2 3.9 17.8 6.2 17.8C12.4 17.8 15.8 12.6 15.8 8.10004C15.8 7.90004 15.8 7.80004 15.8 7.60004C16.6 7.00004 17.2 6.30004 17.7 5.50004C17.1 5.80004 16.4 5.90004 15.7 6.00004C16.5 5.60004 17.1 4.90004 18 4.20004Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      {# Column 2: Quick links #}
+      {%- if section.settings.quick_links_menu != blank -%}
+        <div class="footer__column">
+          <h3 class="footer__column-title">{{ section.settings.quick_links_title | default: 'Quick Links' }}</h3>
+          <ul class="footer__menu">
+            {%- for link in linklists[section.settings.quick_links_menu].links -%}
+              <li class="footer__menu-item">
+                <a href="{{ link.url }}" class="footer__menu-link">{{ link.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      {# Column 3: Support links #}
+      {%- if section.settings.support_menu != blank -%}
+        <div class="footer__column">
+          <h3 class="footer__column-title">{{ section.settings.support_title | default: 'Support' }}</h3>
+          <ul class="footer__menu">
+            {%- for link in linklists[section.settings.support_menu].links -%}
+              <li class="footer__menu-item">
+                <a href="{{ link.url }}" class="footer__menu-link">{{ link.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      {# Column 4: Newsletter #}
+      {%- if show_newsletter -%}
+        <div class="footer__column footer__column--newsletter">
+          {%- if newsletter_heading != blank -%}
+            <h3 class="footer__column-title">{{ newsletter_heading }}</h3>
+          {%- endif -%}
+          {%- if newsletter_text != blank -%}
+            <p class="footer__newsletter-text">{{ newsletter_text }}</p>
+          {%- endif -%}
+          {%- form 'customer', id: nil, class: 'footer__newsletter-form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="footer__newsletter-input-wrapper">
+              <input
+                type="email"
+                name="contact[email]"
+                class="footer__newsletter-input"
+                value="{{ form.email }}"
+                placeholder="{{ 'general.newsletter.placeholder' | t }}"
+                aria-label="{{ 'general.newsletter.email' | t }}"
+                autocorrect="off"
+                autocapitalize="off"
+                required
+              >
+              <button type="submit" class="footer__newsletter-btn" aria-label="{{ 'general.newsletter.submit' | t }}">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            {%- if form.posted_successfully? -%}
+              <p class="footer__newsletter-success">{{ 'general.newsletter.success' | t }}</p>
+            {%- elsif form.errors -%}
+              <p class="footer__newsletter-error">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {# ---- Bottom bar ---- #}
+  <div class="footer__bottom">
+    <div class="footer__container">
+      <div class="footer__bottom-inner">
+        <div class="footer__copyright">
+          {%- if copyright_text != blank -%}
+            {{ copyright_text }}
+          {%- else -%}
+            &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'sections.footer.all_rights_reserved' | t }}
+          {%- endif -%}
+        </div>
+        {%- if show_payment_icons -%}
+          <div class="footer__payment-icons">
+            <span class="footer__payment-icon">{{ 'visa' | payment_type_svg_tag: class: 'payment-icon' }}</span>
+            <span class="footer__payment-icon">{{ 'mastercard' | payment_type_svg_tag: class: 'payment-icon' }}</span>
+            <span class="footer__payment-icon">{{ 'amex' | payment_type_svg_tag: class: 'payment-icon' }}</span>
+            <span class="footer__payment-icon">{{ 'paypal' | payment_type_svg_tag: class: 'payment-icon' }}</span>
+            <span class="footer__payment-icon">{{ 'shopify_pay' | payment_type_svg_tag: class: 'payment-icon' }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "section",
+  "class": "shopify-section-footer",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#F5F0EB"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Brand column"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "default": "Sleek is a clean beauty and luxury lifestyle brand dedicated to minimalist elegance. Thoughtfully crafted essentials for the modern individual.",
+      "info": "A short paragraph about your brand."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social media icons",
+      "default": true,
+      "info": "Configure social links in Theme settings."
+    },
+    {
+      "type": "header",
+      "content": "Quick links"
+    },
+    {
+      "type": "text",
+      "id": "quick_links_title",
+      "label": "Column heading",
+      "default": "Quick Links"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_links_menu",
+      "label": "Menu",
+      "info": "Links to show in this column."
+    },
+    {
+      "type": "header",
+      "content": "Support"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Column heading",
+      "default": "Support"
+    },
+    {
+      "type": "link_list",
+      "id": "support_menu",
+      "label": "Menu",
+      "info": "Links to show in this column."
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show newsletter signup",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Heading",
+      "default": "Join the Inner Circle"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Description",
+      "default": "Be the first to know about new arrivals, exclusive drops, and beauty rituals."
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "info": "Leave blank to use default: © [year] [shop name]. All rights reserved."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "settings": {
+        "bg_color": "#1A1A1A",
+        "text_color": "#CCCCCC",
+        "heading_color": "#F5F0EB",
+        "divider_color": "#333333",
+        "brand_description": "Sleek is a clean beauty and luxury lifestyle brand dedicated to minimalist elegance. Thoughtfully crafted essentials for the modern individual.",
+        "show_social": true,
+        "quick_links_title": "Quick Links",
+        "support_title": "Support",
+        "show_newsletter": true,
+        "newsletter_heading": "Join the Inner Circle",
+        "newsletter_text": "Be the first to know about new arrivals, exclusive drops, and beauty rituals.",
+        "show_payment_icons": true
+      }
+    }
+  ]
+}
+{% endschema %}

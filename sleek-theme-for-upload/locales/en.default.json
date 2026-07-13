@@ -1,0 +1,111 @@
+{
+  "general": {
+    "brand": "Sleek",
+    "description": "Blend beauty in you"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "refresh_page": "Refreshing page...",
+    "link_messages": {
+      "new_window": "Opens in a new window."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add To Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "value_unavailable": "Value unavailable",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "from_price": "From",
+      "media": {
+        "image_available": "Image {{ index }} is now available in gallery view"
+      }
+    },
+    "countdown": "in stock",
+    "reviews": "reviews",
+    "description": "Description",
+    "shipping_policy": "Shipping",
+    "calculated_at_checkout": "calculated at checkout.",
+    "quantity": "Quantity",
+    "you_may_also_like": "You may also like"
+  },
+  "collections": {
+    "general": {
+      "items_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "filter": {
+      "title": "Filter",
+      "sort_by": "Sort by",
+      "clear": "Clear all",
+      "price": "Price"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Check out",
+    "view_cart": "View cart",
+    "error": "There was an error while updating your cart. Please try again.",
+    "quantity_error": "You can only add {{ quantity }} of this item to your cart."
+  },
+  "sections": {
+    "slideshow": {
+      "pause_slideshow": "Pause slideshow",
+      "play_slideshow": "Play slideshow"
+    },
+    "footer": {
+      "newsletter_title": "Join our list",
+      "newsletter_placeholder": "Enter your email",
+      "newsletter_button": "Subscribe",
+      "copyright": "© {{ year }} {{ shop }}. All rights reserved."
+    },
+    "header": {
+      "menu": "Menu",
+      "close": "Close",
+      "search": "Search",
+      "account": "Account",
+      "logout": "Log out"
+    },
+    "newsletter": {
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "confirmation": "Thanks for subscribing",
+      "error": "Please enter a valid email",
+      "subheading": "Be the first to know about new collections and exclusive offers."
+    }
+  },
+  "blog": {
+    "title": "Blog"
+  },
+  "articles": {
+    "read_more": "Read more",
+    "by_author": "by {{ author }}",
+    "comments": "Comments",
+    "leave_comment": "Leave a comment",
+    "no_comments": "No comments yet"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search our store",
+    "no_results": "No results found for \"{{ terms }}\"",
+    "view_all": "View all"
+  },
+  "404": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "description": "The page you were looking for doesn't exist.",
+    "cta": "Back to homepage"
+  },
+  "gift_cards": {
+    "title": "Gift card",
+    "remaining": "Remaining balance",
+    "print": "Print"
+  }
+}

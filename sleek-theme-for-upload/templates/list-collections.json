@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "list-header": {
+      "type": "rich-text",
+      "settings": {
+        "heading": "Our collections",
+        "alignment": "center"
+      }
+    },
+    "list-grid": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Shop by collection"
+      }
+    }
+  },
+  "order": ["list-header", "list-grid"]
+}

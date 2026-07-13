@@ -1,0 +1,25 @@
+<div class="product-card product-card--placeholder">
+  <div class="product-card__image-wrapper">
+    <div class="product-card__image product-card__image--placeholder">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  </div>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title product-card__title--placeholder">
+      {{ 'homepage.onboarding.product_title' | t }}
+    </h3>
+
+    <div class="product-card__price">
+      <span class="product-card__price--regular">
+        {{ 1999 | money }}
+      </span>
+    </div>
+
+    <div class="product-card__swatches product-card__swatches--placeholder">
+      <span class="product-card__swatch"></span>
+      <span class="product-card__swatch"></span>
+      <span class="product-card__swatch"></span>
+    </div>
+  </div>
+</div>

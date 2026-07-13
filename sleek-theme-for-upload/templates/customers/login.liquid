@@ -1,0 +1,70 @@
+{% layout 'theme' %}
+
+<main class="login-page" role="main">
+  <div class="page-width">
+    <div class="form-wrapper form-wrapper--login">
+      <h1 class="form-title">{{ 'customer.login.title' | t }}</h1>
+
+      {% form 'customer_login' %}
+        {{ form.errors | default_errors }}
+
+        <div class="field">
+          <label for="CustomerEmail" class="field__label">
+            {{ 'customer.login.email' | t }}
+          </label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            class="field__input"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            required
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+
+        {% if form.password_needed %}
+          <div class="field">
+            <label for="CustomerPassword" class="field__label">
+              {{ 'customer.login.password' | t }}
+            </label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="CustomerPassword"
+              class="field__input"
+              autocomplete="current-password"
+              required
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="button button--primary button--full">
+              {{ 'customer.login.sign_in' | t }}
+            </button>
+          </div>
+
+          <div class="form-links">
+            <a href="{{ routes.account_recover_url }}" class="form-link">
+              {{ 'customer.login.forgot_password' | t }}
+            </a>
+          </div>
+        {% endif %}
+      {% endform %}
+
+      <div class="form-footer">
+        <p>{{ 'customer.login.new_customer' | t }}</p>
+        <a href="{{ routes.account_register_url }}" class="button button--secondary">
+          {{ 'customer.login.create_account' | t }}
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

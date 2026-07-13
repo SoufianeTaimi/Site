@@ -1,0 +1,78 @@
+{%- liquid
+  assign text_lines = section.settings.text_lines | newline_to_br | strip_newlines | split: '<br />'
+  assign bg_color = section.settings.bg_color
+  assign text_color = section.settings.text_color
+  assign speed = section.settings.speed | default: 30
+  assign marquee_id = 'announcement-marquee-' | append: section.id
+-%}
+{%- unless text_lines == blank -%}
+<div
+  class="announcement-bar"
+  style="--announcement-bg: {{ bg_color }}; --announcement-text: {{ text_color }}; --announcement-speed: {{ speed }}s;"
+  role="banner"
+  aria-label="{{ 'sections.announcement_bar.aria_label' | t }}"
+>
+  <div class="announcement-bar__inner">
+    <div class="announcement-bar__track" id="{{ marquee_id }}" data-speed="{{ speed }}">
+      {%- for i in (1..6) -%}
+        {%- for line in text_lines -%}
+          {%- assign trimmed = line | strip -%}
+          {%- if trimmed != blank -%}
+            <span class="announcement-bar__item">{{ trimmed }}</span>
+            <span class="announcement-bar__separator" aria-hidden="true">&#9679;</span>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endunless -%}
+{% schema %}
+{
+  "name": "Announcement bar",
+  "tag": "section",
+  "class": "shopify-section-announcement-bar",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text_lines",
+      "label": "Announcement messages",
+      "info": "Each line becomes a separate message in the scrolling marquee.",
+      "default": "Free shipping on all orders over $50\nNew: The Clean Beauty Collection\nSubscribe for 15% off your first order"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#F5F0EB"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "default": 30,
+      "unit": "s"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "settings": {
+        "text_lines": "Free shipping on all orders over $50\nNew: The Clean Beauty Collection\nSubscribe for 15% off your first order",
+        "bg_color": "#1A1A1A",
+        "text_color": "#F5F0EB",
+        "speed": 30
+      }
+    }
+  ]
+}
+{% endschema %}
