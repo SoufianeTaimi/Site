@@ -1,0 +1,120 @@
+{%- style -%}
+  .buttons-with-icon {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .buttons-with-icon {
+      padding: 6rem 3rem;
+    }
+  }
+  
+  .buttons-with-icon__heading {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+  }
+  
+  .buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  .button-item {
+    text-align: center;
+  }
+  
+  .button-item__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .button-item__title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+{%- endstyle -%}
+
+<div class="buttons-with-icon">
+  {% if section.settings.heading %}
+    <h2 class="buttons-with-icon__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+  
+  <div class="buttons-grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'button' %}
+        <div class="button-item">
+          {% if block.settings.icon %}
+            <div class="button-item__icon">{{ block.settings.icon }}</div>
+          {% endif %}
+          <h3 class="button-item__title">{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+          {% if block.settings.button_label %}
+            <a href="{{ block.settings.button_link }}" class="button" style="margin-top: 1rem;">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Buttons with Icon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "✨"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Feature description</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Buttons with Icon",
+      "blocks": [
+        { "type": "button" },
+        { "type": "button" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

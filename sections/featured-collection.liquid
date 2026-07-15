@@ -1,0 +1,129 @@
+{%- style -%}
+  .featured-collection {
+    padding: 3rem 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .featured-collection {
+      padding: 6rem 3rem;
+    }
+  }
+  
+  .featured-collection__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .featured-collection__heading {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .featured-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .product-card {
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-card__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  
+  .product-card__title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-card__price {
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+{%- endstyle -%}
+
+<div class="featured-collection">
+  <div class="featured-collection__header">
+    <h2 class="featured-collection__heading">{{ section.settings.title }}</h2>
+    {% if section.settings.description %}
+      <p>{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+  
+  <div class="featured-collection__grid">
+    {% for product in collections[section.settings.collection].products limit: section.settings.product_limit %}
+      <div class="product-card">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-card__image">
+        {% endif %}
+        <h3 class="product-card__title">{{ product.title }}</h3>
+        <div class="product-card__price">{{ product.price | money }}</div>
+        <a href="{{ product.url }}" class="button button--secondary">View Product</a>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% if section.settings.button_label %}
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/collections/{{ section.settings.collection }}" class="button">{{ section.settings.button_label }}</a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "label": "Products to Show",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "View All"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

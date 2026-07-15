@@ -1,0 +1,96 @@
+{%- style -%}
+  .collection-list-slider {
+    padding: 3rem 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .collection-list-slider {
+      padding: 6rem 3rem;
+    }
+  }
+  
+  .collection-list__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .collection-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .collection-item__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  
+  .collection-item__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+  }
+  
+  .collection-item:hover .collection-item__content {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .collection-item__title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+{%- endstyle -%}
+
+<section class="collection-list-slider">
+  <div class="collection-list__grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'collection' %}
+        {% if collections[block.settings.collection].featured_image %}
+          <a href="/collections/{{ block.settings.collection }}" class="collection-item">
+            <img src="{{ collections[block.settings.collection].featured_image | image_url: width: 500 }}" alt="{{ collections[block.settings.collection].title }}" class="collection-item__image">
+            <div class="collection-item__content">
+              <h3 class="collection-item__title">{{ collections[block.settings.collection].title }}</h3>
+            </div>
+          </a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List Slider",
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List Slider",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

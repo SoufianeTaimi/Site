@@ -1,35 +1,31 @@
-{% sections 'index-sections' %}
+{%- section 'image-with-text-slider' -%}
 
-<div class="index-container">
-  <section class="hero-banner">
-    <h1>Welcome to Ceramide Store</h1>
-    <p>Premium skincare products</p>
-    <a href="/products" class="btn">Shop Now</a>
-  </section>
+{%- section 'collection-list-slider' -%}
 
-  <section class="featured-products">
-    <h2>Featured Products</h2>
-    <div class="products-grid">
-      {% for product in collections.featured.products limit: 8 %}
-        <div class="product-card">
-          <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-          <h3>{{ product.title }}</h3>
-          <p class="price">{{ product.price | money }}</p>
-          <a href="{{ product.url }}" class="btn">View Product</a>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
+{%- section 'featured-collection' -%}
 
-  <section class="testimonials">
-    <h2>Customer Reviews</h2>
-    <div class="reviews-grid">
-      {% for review in collections.all.products.first.reviews limit: 3 %}
-        <div class="review-card">
-          <p class="review-text">"{{ review.body }}"</p>
-          <p class="review-author">— {{ review.author }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
-</div>
+{%- section 'buttons-with-icon-1' -%}
+
+{%- section 'custom-content-1' -%}
+
+{%- section 'buttons-with-icon-2' -%}
+
+{%- section 'featured-countdown-timer' -%}
+
+{%- section 'promotion-banner' -%}
+
+{%- section 'horizontal-products-list' -%}
+
+{%- section 'favorite-products' -%}
+
+{%- section 'collection-list' -%}
+
+{%- section 'brand-logos' -%}
+
+{%- section 'products-bundle' -%}
+
+{%- section 'featured-collection-2' -%}
+
+{%- section 'custom-content-2' -%}
+
+{%- section 'testimonials-masonry' -%}

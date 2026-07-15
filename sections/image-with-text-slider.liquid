@@ -1,0 +1,82 @@
+{%- style -%}
+  .image-slider__text {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .image-slider__content {
+    padding: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    .image-slider__text {
+      max-width: 38.6rem;
+    }
+    .image-slider__content {
+      padding: 6rem;
+    }
+  }
+  
+  .image-slider__heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .image-slider__text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+{%- endstyle -%}
+
+<div class="image-with-text-slider">
+  <div class="image-slider__content">
+    <div class="image-slider__text">
+      <h1 class="image-slider__heading">{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+      {% if section.settings.button_label %}
+        <a href="{{ section.settings.button_link }}" class="button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with Text Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Premium Ceramide Skincare"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Discover our collection of luxurious ceramide-infused products designed to nourish and protect your skin.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Slider"
+    }
+  ]
+}
+{% endschema %}
