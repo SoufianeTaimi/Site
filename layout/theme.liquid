@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  {{ content_for_header }}
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">{{ shop.name }}</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <a href="/cart">Cart ({{ cart.item_count }})</a>
+      </div>
+    </nav>
+  </header>
+
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About {{ shop.name }}</h4>
+        <p>Premium ceramide skincare products for your natural beauty.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/pages/about">About Us</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/policies/terms-of-service">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

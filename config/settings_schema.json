@@ -1,0 +1,41 @@
+[
+  {
+    "name": "theme_info",
+    "theme": {
+      "name": "Ceramide Store Theme",
+      "id": 123456789
+    }
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary Color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body Font"
+      }
+    ]
+  }
+]

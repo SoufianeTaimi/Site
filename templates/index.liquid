@@ -1,0 +1,35 @@
+{% sections 'index-sections' %}
+
+<div class="index-container">
+  <section class="hero-banner">
+    <h1>Welcome to Ceramide Store</h1>
+    <p>Premium skincare products</p>
+    <a href="/products" class="btn">Shop Now</a>
+  </section>
+
+  <section class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="products-grid">
+      {% for product in collections.featured.products limit: 8 %}
+        <div class="product-card">
+          <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p class="price">{{ product.price | money }}</p>
+          <a href="{{ product.url }}" class="btn">View Product</a>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Customer Reviews</h2>
+    <div class="reviews-grid">
+      {% for review in collections.all.products.first.reviews limit: 3 %}
+        <div class="review-card">
+          <p class="review-text">"{{ review.body }}"</p>
+          <p class="review-author">— {{ review.author }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
